@@ -39,6 +39,7 @@ let keyObject = {
     X: 'C',
     Y: 'B',
     Z: 'A',
+    ' ': ' ',
 };
 
 //  3  Create two arrays, one called “uiArr” to store our input array and “encryptedArray” to store our output array.
@@ -60,6 +61,38 @@ console.log(inputtedWord);
 // To perform a string check, use this:
 
 // /^[a-zA-Z]*$/.test(userInput)
-if (inputtedWord.length == '0 ' || /^[a-zA-Z]*$/.test(inputtedWord)) {
-    alert('please enter a word');
+if (inputtedWord.length == 0 || /^[a-zA-Z]*$/.test(inputtedWord)) {
+    uiArr = inputtedWord.toUpperCase().split(``);
+    // console.log = (`This is your inputed  as an array${uiArr}, ${uiArr[0]}).`);
+    let userinputUiArr = document.querySelector('#userinput');
+    userinputUiArr.innerHTML = `This is your inputed  as an array${uiArr}, ${uiArr[0]}.`;
+    // console.log(uiArr[0]);
+} else {
+    // console.log(
+    //     'You entered an invalid input. Please refresh the page and try again!'
+    // );
+    alert(
+        `You entered an invalid input. Please refresh the page and try again!`
+    );
+}
+
+// Create a loop that will:
+
+// Go through each element of your uiArr array.
+// Use those elements as keys, and find the associated values in our "converter" object.
+// Store that value in our new output variable.
+// Log your new, encrypted array to see whether your loop is working properly.
+
+// Re-join your elements into one word and log it to check your end result.
+
+for (let i = 0; i < uiArr.length; i++) {
+    encryptedArray.push(keyObject[uiArr[i]]);
+    // console.log(`This is your encrypted output: ${encryptedArray}`);
+    // console.log(`Thsi is the your output${encryptedArray.join('')}`);
+    let inputedencryptedArray = document.querySelector('#encription');
+    inputedencryptedArray.innerHTML = `This is your encrypted output: ${encryptedArray}`;
+    let joinedEncryptedArray = document.querySelector('#joinedEncrypted');
+    joinedEncryptedArray.innerHTML = `This is the your output: ${encryptedArray.join(
+        ''
+    )}`;
 }
